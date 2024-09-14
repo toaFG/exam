@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_models,access_employee_models,model_hr_employee,base.group_user,0,0,0,0
+access_set_experience_year,access_set_experience_year,model_set_experience_wizard,base.group_user,1,1,1,1
+access_hr_employee_user,employee user,model_hr_employee,hr.group_hr_user,1,0,0,0

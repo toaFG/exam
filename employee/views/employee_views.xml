@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="inherit_employee_view_tree" model="ir.ui.view">
+            <field name="name">employee.view.tree.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_email']" position="after">
+                    <field name="years_of_experience"/>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="%(action_set_experience_wizard)d" string="Set Years of Experience" type="action"
+                            class="oe_highlight" icon="fa-cogs"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="inherit_employee_view_form" model="ir.ui.view">
+            <field name="name">employee.view.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_email']" position="after">
+                    <field name="years_of_experience" atrrs="{'required': [('years_of_experience', '&lt;', 30)]}"/>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="%(action_set_experience_wizard)d" string="Set year experience" type="action"
+                            class="btn-primary" icon="fa-star"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_employee" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="inherit_employee_view_tree"/>
+        </record>
+    </data>
+</odoo>
