@@ -7,7 +7,11 @@ class Employee(models.Model):
     MIN_YEARS_OF_EXPERIENCE = 0
     MAX_YEARS_OF_EXPERIENCE = 30
 
-    years_of_experience = fields.Integer(string='Years of Experience', groups='group_employee_manager')
+    years_of_experience = fields.Integer(string='Years of Experience', groups='employee.employee_management_aum_group_employee_manager')
+
+    certificate_ids = fields.Many2many('employee.certificate', string='Certificates')
+    skill_ids = fields.Many2many('employee.skill', string='Skills')
+
     _sql_constraints = [
         ('check_years_of_experience', 'CHECK(years_of_experience >= 0 AND years_of_experience <= 30)',
          'Years of experience must be between 0 and 30')

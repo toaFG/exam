@@ -7,10 +7,11 @@
             <field name="sequence">50</field>
         </record>
 
-        <record id="group_employee_manager" model="res.groups">
-            <field name="name">Manager</field>
-            <field name="category_id" ref="module_employee_management"/>
+        <record id="employee_management_aum_group_employee_manager" model="res.groups">
+            <field name="name">Employee Manager</field>
+            <field name="category_id" ref="module_category_employee_management"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
         </record>
 
         <record id="rule_employee_manager" model="ir.rule">

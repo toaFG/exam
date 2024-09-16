@@ -10,4 +10,4 @@ class SetExperienceWizard(models.TransientModel):
         employees = self.env['hr.employee'].browse(active_ids)
         for employee in employees:
             employee.write({'years_of_experience': self.year_of_experience})
-        return {'type': 'ir.actions.act_window_close'}
+        return True
