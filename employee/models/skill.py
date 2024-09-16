@@ -1,9 +1,12 @@
 from odoo import fields, models, api
-class $ModelName$ (models.Model):
-    _name = '$ProjectName$.$TableName$'
-    _description = '$Description$'
 
-    name = fields.Char()
-    $END$
+
+class EmployeeSkill(models.Model):
+    _name = 'employee.skill'
+
+    name = fields.Char(string='Skill Name', required=True)
+    skill_rate = fields.Float(string='Skill Rate', required=True)
+
+
 
 
