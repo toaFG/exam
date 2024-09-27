@@ -1,28 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="module_employee_management" model="ir.module.category">
+        <record id="module_category_employee_management" model="ir.module.category">
             <field name="name">Employee Management</field>
             <field name="description">Helps you manage employees</field>
             <field name="sequence">50</field>
         </record>
 
-        <record id="employee_management_aum_group_employee_manager" model="res.groups">
-            <field name="name">Employee Manager</field>
+        <record id="employee_management_aum_group_skill_manager" model="res.groups">
+            <field name="name">Skill Manager</field>
             <field name="category_id" ref="module_category_employee_management"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
             <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
         </record>
 
+        <record id="employee_management_aum_group_certificate_manager" model="res.groups">
+            <field name="name">Certificate Manager</field>
+            <field name="category_id" ref="module_category_employee_management"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="employee_management_aum_group_yoe_manager" model="res.groups">
+            <field name="name">Years of Experience Manager</field>
+            <field name="category_id" ref="module_category_employee_management"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="employee_management_aum_group_employee_manager" model="res.groups">
+            <field name="name">Employee Manager</field>
+            <field name="category_id" ref="module_category_employee_management"/>
+            <field name="implied_ids" eval="[
+                (4, ref('employee_management_aum_group_skill_manager')),
+                (4, ref('employee_management_aum_group_certificate_manager')),
+                (4, ref('employee_management_aum_group_yoe_manager')),
+                (4, ref('base.group_user'))
+            ]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+
         <record id="rule_employee_manager" model="ir.rule">
             <field name="name">Employee Manager</field>
-            <field name="model_id" ref="model_hr_employee"/>
+            <field name="model_id" ref="hr.model_hr_employee"/>
             <field name="domain_force">[(1, '=', 1)]</field>
-            <field name="groups" eval="[(6, 0, [ref('group_employee_manager')])]"/>
+            <field name="groups" eval="[(4, ref('employee_management_aum_group_employee_manager'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
+
+         <record id="access_employee_skills_manager" model="ir.model.access">
+            <field name="name">Skill Manager Access</field>
+            <field name="model_id" ref="model_employee_skills"/>
+            <field name="group_id" ref="employee_management_aum_group_skill_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_employee_certificate_manager" model="ir.model.access">
+            <field name="name">Certificate Manager Access</field>
+            <field name="model_id" ref="model_employee_certificate"/>
+            <field name="group_id" ref="employee_management_aum_group_certificate_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
     </data>
 </odoo>

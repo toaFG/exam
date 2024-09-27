@@ -7,11 +7,14 @@
             <field name="inherit_id" ref="hr.view_employee_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='work_email']" position="after">
-                    <field name="years_of_experience"/>
+                    <field name="th_years_of_experience"/>
+
                 </xpath>
                 <xpath expr="//header" position="inside">
                     <button name="%(action_set_experience_wizard)d" string="Set Years of Experience" type="action"
-                            class="oe_highlight" icon="fa-cogs"/>
+                            class="oe_highlight" icon="fa-cogs"
+                            groups="employee.employee_management_aum_group_employee_manager"
+                    />
                 </xpath>
             </field>
         </record>
@@ -22,20 +25,43 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='work_email']" position="after">
-                    <field name="years_of_experience" atrrs="{'required': [('years_of_experience', '&lt;', 30)]}"/>
+                    <field name="th_years_of_experience"
+                           atrrs="{'required': [('th_years_of_experience', '&lt;', 30)]}"/>
                 </xpath>
                 <xpath expr="//header" position="inside">
                     <button name="%(action_set_experience_wizard)d" string="Set year experience" type="action"
-                            class="btn-primary" icon="fa-star"/>
+                            class="btn-primary" icon="fa-star"
+                            groups="employee.employee_management_aum_group_employee_manager"
+                    />
+                </xpath>
+                <xpath expr="//notebook/page[@name='public']" position="before">
+                    <page name="skills_resume" string="Resume">
+                        <div class="row">
+                            <div class="col-lg-7 d-flex flex-column">
+                                <separator string="Certificate" class="mb-4"/>
+                                <field nolabel="1" name="th_certificate_ids" class="mt-2">
+                                    <tree widget="one2many">
+                                        <field name="name"/>
+                                        <field name="validity_start"/>
+                                        <field name="validity_end"/>
+                                    </tree>
+                                </field>
+                            </div>
+                            <div class="col-lg-5 d-flex flex-column">
+                                <separator string="Skills" class="mb-4"/>
+                                <field nolabel="1" name="th_skill_ids"
+                                       class="mt-2">
+                                    <tree widget="one2many">
+                                        <field name="th_skill_type_id" string="Skill Type"/>
+                                        <field name="name" string="Skill"/>
+                                        <field name="th_level_progress" widget="progressbar"/>
+                                    </tree>
+                                </field>
+                            </div>
+                        </div>
+                    </page>
                 </xpath>
             </field>
-        </record>
-
-        <record id="action_employee" model="ir.actions.act_window">
-            <field name="name">Employee</field>
-            <field name="res_model">hr.employee</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="inherit_employee_view_tree"/>
         </record>
     </data>
 </odoo>

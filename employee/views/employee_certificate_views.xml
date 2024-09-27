@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_employee_certificate_tree" model="ir.ui.view">
+            <field name="name">employee.certificate.tree</field>
+            <field name="model">employee.certificate</field>
+            <field name="arch" type="xml">
+                <tree string="Certificate">
+                    <field name="name"/>
+                    <field name="validity_start"/>
+                    <field name="validity_end"/>
+                    <field name="link"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_employee_certificate_form" model="ir.ui.view">
+            <field name="name">employee.certificate.form</field>
+            <field name="model">employee.certificate</field>
+            <field name="arch" type="xml">
+                <form string="Certificate">
+                    <group>
+                            <field name="name" string="Certificate Name" nolabel="0"/>
+                            <field name="skill_ids" string="Skills" widget="many2many_tags"/>
+                            <group>
+                                <field name="rate" string="Rate"/>
+                                <field name="link" string="Link"/>
+                            </group>
+                            <group>
+                                <field name="validity_start" string="Validity Start"/>
+                                <field name="validity_end" string="Validity End"/>
+                            </group>
+                            <notebook>
+                                <page string="Skills">
+                                    <field name="skill_ids"/>
+                                </page>
+                            </notebook>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_action_employee_certificate" model="ir.actions.act_window">
+            <field name="name">Certificate</field>
+            <field name="res_model">employee.certificate</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_employee_certificate_tree"/>
+            <field name="domain">[]</field>
+        </record>
+    </data>
+</odoo>

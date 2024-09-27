@@ -2,6 +2,11 @@
 <odoo>
     <data>
         <menuitem id="menu_employee" name="Employee" sequence="10"/>
-        <menuitem id="menu_employee_list" name="Employee List" parent="menu_employee" action="action_employee" sequence="10"/>
+        <menuitem id="menu_employee_skill_management_vip" name="Employee Skill" parent="hr.menu_hr_root"
+                  sequence="103"/>
+        <menuitem id="menu_employee_skill_normal" name="Employee Skill" parent="menu_employee_skill_management_vip"
+                  action="view_action_employee_skill" sequence="10"/>
+        <menuitem id="menu_employee_certificate_management" name="Employee Certificate" parent="menu_employee_skill_management_vip"
+                    action="view_action_employee_certificate" sequence="20"/>
     </data>
 </odoo>

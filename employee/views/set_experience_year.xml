@@ -9,8 +9,16 @@
                     <group>
                         <field name="year_of_experience"/>
                     </group>
+                  <div class="o_row">
+                <div class="o_col">
+                    <field name="skills"/>
+                </div>
+                <div class="o_col">
+                    <field name="certificates"/>
+                </div>
+            </div>
                     <footer>
-                        <button string="Set" type="object" name="set_experience" class="btn-primary"/>
+                        <button string="Set" type="object" name="set_employee_details" class="btn-primary"/>
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>
