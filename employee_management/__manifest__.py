@@ -11,7 +11,7 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         "data/data.xml",
-        "views/set_experience_year.xml",
+        "wizard/set_experience_year.xml",
         "views/employee_certificate_views.xml",
         "views/employee_views.xml",
         "views/employee_skills_views.xml",

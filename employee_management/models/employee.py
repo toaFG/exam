@@ -29,7 +29,16 @@ class Employee(models.Model):
         if 'th_certificate_ids' in vals:
             old_certificates = self.th_certificate_ids
             new_certificates = self.env['employee.certificate'].browse(vals['th_certificate_ids'][0][2])
+            added_certificates = new_certificates - old_certificates
             removed_certificates = old_certificates - new_certificates
+
+            if added_certificates:
+                new_certs_count = len(added_certificates)
+                experience_increment = new_certs_count // 2  
+
+                if experience_increment > 0:
+                    new_experience = self.th_years_of_experience + experience_increment
+                    self.th_years_of_experience = min(new_experience, self.MAX_YEARS_OF_EXPERIENCE)
 
             if removed_certificates:
                 self._remove_skills_from_removed_certificates(removed_certificates)

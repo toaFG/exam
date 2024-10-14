@@ -13,7 +13,6 @@
                 <xpath expr="//header" position="inside">
                     <button name="%(action_set_experience_wizard)d" string="Set Years of Experience" type="action"
                             class="oe_highlight" icon="fa-cogs"
-                            groups="employee.employee_management_aum_group_employee_manager"
                     />
                 </xpath>
             </field>
@@ -31,7 +30,11 @@
                 <xpath expr="//header" position="inside">
                     <button name="%(action_set_experience_wizard)d" string="Set year experience" type="action"
                             class="btn-primary" icon="fa-star"
-                            groups="employee.employee_management_aum_group_employee_manager"
+                    />
+                </xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="%(action_set_experience_wizard)d" string="Set Years of Experience" type="action"
+                            class="btn-primary" icon="fa-cogs"
                     />
                 </xpath>
                 <xpath expr="//notebook/page[@name='public']" position="before">
