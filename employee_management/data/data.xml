@@ -1,6 +1,6 @@
 <odoo>
     <data noupdate="1">
-        <!-- Adding data for employee skill types -->
+        <!-- Adding data for employee_management skill types -->
         <record id="employee_skill_type_1" model="employee.skills.type">
             <field name="name">Technical Skills</field>
         </record>
@@ -13,7 +13,7 @@
             <field name="name">Communication Skills</field>
         </record>
 
-        <!-- Adding data for employee skill levels -->
+        <!-- Adding data for employee_management skill levels -->
         <record id="employee_skill_level_1" model="employee.skills.level">
             <field name="name">Advanced Level</field>
             <field name="th_skill_type_id" ref="employee_skill_type_1"/>

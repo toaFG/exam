@@ -9,8 +9,7 @@ class Employee(models.Model):
     MIN_YEARS_OF_EXPERIENCE = 0
     MAX_YEARS_OF_EXPERIENCE = 30
 
-    th_years_of_experience = fields.Integer(string='Years of Experience',
-                                            groups='employee.employee_management_aum_group_employee_manager')
+    th_years_of_experience = fields.Integer(string='Years of Experience')
 
     th_certificate_ids = fields.Many2many('employee.certificate', string='Certificates')
     th_skill_ids = fields.Many2many('employee.skills', string='Skills')
